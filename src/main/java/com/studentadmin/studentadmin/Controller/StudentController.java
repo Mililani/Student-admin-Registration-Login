@@ -31,14 +31,14 @@ public class StudentController {
     }
 
 
-    
+    //Display login page
     @GetMapping("/login")
     public String getLoginPage(Model model){
         model.addAttribute("loginRequest",new StudentModel());
         return "login_page";
     }
 
-
+    //Post data to database
     @PostMapping("/register")
     public  String register(@ModelAttribute StudentModel studentModel){
         System.out.println("register request: "+studentModel);
@@ -46,7 +46,7 @@ public class StudentController {
          return registeredStudent==null ? "error_page" : "redirect:/login";
     }
 
-
+    //post date to login to student page
     @PostMapping("/login")
     public  String login(@ModelAttribute StudentModel studentModel,Model model){
         System.out.println("login request: "+studentModel);
