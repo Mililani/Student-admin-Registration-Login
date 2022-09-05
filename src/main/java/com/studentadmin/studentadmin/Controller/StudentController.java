@@ -46,4 +46,22 @@ public class StudentController {
          return registeredStudent==null ? "error_page" : "redirect:/login";
     }
 
+
+    @PostMapping("/login")
+    public  String login(@ModelAttribute StudentModel studentModel,Model model){
+        System.out.println("login request: "+studentModel);
+        StudentModel authenticated=studentService.authenticate(studentModel.getName(),studentModel.getPassword());
+        if(authenticated !=null){
+            model.addAttribute("userLogin",authenticated.getName());
+            return "personal_page";
+
+        }else {
+            return "error_page";
+        }
+    }
+
+
+
+    
+
 }
