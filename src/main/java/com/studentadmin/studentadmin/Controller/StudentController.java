@@ -22,6 +22,11 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
+    @GetMapping("/")
+    public String homepage(){
+        
+        return "home_page";
+    }
 
     //display html register page
     @GetMapping("/register")
