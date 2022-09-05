@@ -42,7 +42,7 @@ public class StudentController {
     @PostMapping("/register")
     public  String register(@ModelAttribute StudentModel studentModel){
         System.out.println("register request: "+studentModel);
-        StudentModel registeredStudent=studentService.registerStudent(name, email, Address, Course, password);
+        StudentModel registeredStudent=studentService.registerStudent(studentModel.getName(),studentModel.getEmail(), studentModel.getAddress(), studentModel.getCourse(), studentModel.getPassword());
          return registeredStudent==null ? "error_page" : "redirect:/login";
     }
 
