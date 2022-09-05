@@ -8,6 +8,8 @@ public class StudentadminApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(StudentadminApplication.class, args);
+
+		System.out.println("Application is runing on Port:8080");
 	}
 
 }
