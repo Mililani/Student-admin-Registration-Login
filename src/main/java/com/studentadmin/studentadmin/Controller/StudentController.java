@@ -53,7 +53,7 @@ public class StudentController {
         StudentModel authenticated=studentService.authenticate(studentModel.getName(),studentModel.getPassword());
         if(authenticated !=null){
             model.addAttribute("userLogin",authenticated.getName());
-            return "personal_page";
+            return "student_page";
 
         }else {
             return "error_page";
