@@ -22,7 +22,7 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-    @GetMapping("")
+    @GetMapping("/student_Portal")
     public String homepage(){
         
         return "home_page";
