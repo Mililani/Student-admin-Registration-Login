@@ -30,14 +30,17 @@ public class AdminController {
 
     @GetMapping("/Admin/login")
     public String getLoginPage(Model model){
-        model.addAttribute("AdminloginRequest",new AdminModel());
+        model.addAttribute("AdminloginRequest",new AdminModel()); 
         return "admin_login_page";
     }
 
     @PostMapping("/Admin/register")
-    public  String register(@ModelAttribute AdminModel adminModel){
+    public  String register(@ModelAttribute AdminModel adminModel,Model model){
         System.out.println("register request: "+ adminModel);
         AdminModel registeredUser=adminService.registerAdmin(adminModel.getName(), adminModel.getContact(), adminModel.getPassword());
+        model.addAttribute("email",registeredUser.getName());
+        model.addAttribute("email",registeredUser.getContact());
+
          return registeredUser==null ? "admin_error_page" : "redirect:/Admin/login";
     }
 
