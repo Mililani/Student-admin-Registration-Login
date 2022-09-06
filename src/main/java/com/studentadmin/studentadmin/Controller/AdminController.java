@@ -22,6 +22,14 @@ public class AdminController {
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
+
+    @GetMapping("/Admin_Portal")
+    public String homepage(){
+        
+        return "AdminPort";
+    }
+
+
     @GetMapping("/Admin/register")
     public String getRegisterPage(Model model){
         model.addAttribute("AdminregisterRequest",new AdminModel());
