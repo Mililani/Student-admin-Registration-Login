@@ -7,12 +7,89 @@
 .text{
    text-align: center;
 }
+
+
+.dashboard .main {
+  grid-row: 1 / span 2;
+  grid-column: 1 / span 1;
+}
+.dashboard .description {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 3;
+}
+.dashboard-card {
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@media (max-width: 992px) {
+  .dashboard {
+    display: block;
+  }
+}
+
+/* Fonts and colors */
+.dashboard h2 {
+  font-size: 20px;
+}
+.dashboard h3 {
+  color: #37B686;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.dashboard p {
+  color: rgba(0,0,0,0.5);
+  font-size: 16px;
+}
+.dashboard img {
+  border-radius: 50%;
+ 
+}
+.dashboard .btn {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+  margin-top: 30px;
+  background: #37B686;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px 20px;
+}
+.dashboard .btn:hover {
+  background: #37B686;
+  opacity: 0.7;
+}
+.main p {
+  margin-bottom: 30px;
+}
 </style>
 </head>
 <body>
-<div class="text">
-    <img src="https://img.icons8.com/bubbles/100/000000/group.png" height="100"/>
-    <h1>Welcome to the personal Student. <span th:next="${userLogin}"></span> </h1>
-</div>
+    <div class="text">
+        <img src="data:image/jpeg;base64,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" height="100"/>
+        <h1>Welcome Student <span th:next="${userLogin}"></span> </h1>
+        
+        <div class="container">
+    
+            <div class="dashboard">
+              <div class="dashboard-card main">
+                <div class="dashboard-card-content">
+                  <img src="https://static.vecteezy.com/system/resources/thumbnails/005/544/718/small/profile-icon-design-free-vector.jpg" alt="" width="100" class="img-circle">
+                  <h2><span th:text="${name}"></span></h2>
+                  <p>Address:<span th:text="${address}"></span></p>
+                  <p>Email:<span th:text="${email}"></span></p>
+                  <p>Course:<span th:text="${course}"></span></p>
+                  <a href="#" class="btn btn-primary btn-lg">Return to Portal</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
 </body>
 </html>

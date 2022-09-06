@@ -58,6 +58,10 @@ public class StudentController {
         StudentModel authenticated=studentService.authenticate(studentModel.getName(),studentModel.getPassword());
         if(authenticated !=null){
             model.addAttribute("userLogin",authenticated.getName());
+            model.addAttribute("name",authenticated.getName());
+            model.addAttribute("email",authenticated.getEmail());
+            model.addAttribute("address",authenticated.getAddress());
+            model.addAttribute("course",authenticated.getCourse());
             return "student_page";
 
         }else {
