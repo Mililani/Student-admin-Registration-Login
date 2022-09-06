@@ -46,9 +46,6 @@ public class AdminController {
     public  String register(@ModelAttribute AdminModel adminModel,Model model){
         System.out.println("register request: "+ adminModel);
         AdminModel registeredUser=adminService.registerAdmin(adminModel.getName(), adminModel.getContact(), adminModel.getPassword());
-        model.addAttribute("name",registeredUser.getName());
-        model.addAttribute("contact",registeredUser.getContact());
-
          return registeredUser==null ? "admin_error_page" : "redirect:/Admin/login";
     }
 
@@ -61,6 +58,8 @@ public class AdminController {
         AdminModel authenticated=adminService.authenticate(adminModel.getName(),adminModel.getPassword());
         if(authenticated !=null){
             model.addAttribute("userLogin",authenticated.getName());
+            model.addAttribute("name",authenticated.getName());
+            model.addAttribute("contact",authenticated.getContact());
             return "admin_Dash_page";
 
         }else {
