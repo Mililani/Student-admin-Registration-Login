@@ -38,8 +38,8 @@ public class AdminController {
     public  String register(@ModelAttribute AdminModel adminModel,Model model){
         System.out.println("register request: "+ adminModel);
         AdminModel registeredUser=adminService.registerAdmin(adminModel.getName(), adminModel.getContact(), adminModel.getPassword());
-        model.addAttribute("email",registeredUser.getName());
-        model.addAttribute("email",registeredUser.getContact());
+        model.addAttribute("name",registeredUser.getName());
+        model.addAttribute("contact",registeredUser.getContact());
 
          return registeredUser==null ? "admin_error_page" : "redirect:/Admin/login";
     }
