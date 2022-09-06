@@ -14,11 +14,14 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-
+//constractor 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
 
+
+
+    //saving student to database
     public StudentModel registerStudent(String name,String email,String Address,String Course,String password){
         if (name == null || password == null) {
             return  null;
@@ -37,6 +40,8 @@ public class StudentService {
             return studentRepository.save(studentModel);
         }
     }
+
+    //helps login by using name and password
     public  StudentModel authenticate(String name,String password){
         return  studentRepository.findByNameAndPassword(name,password).orElse(null);
     }
