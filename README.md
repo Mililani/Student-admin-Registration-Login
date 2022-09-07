@@ -10,6 +10,7 @@
 * Your favourite IDE which  you will need to configure spring boot(visual studio code or STS IDE)
 
 ### Dependencies needed
+* make use of java version 8
 
 * Spring web
 
