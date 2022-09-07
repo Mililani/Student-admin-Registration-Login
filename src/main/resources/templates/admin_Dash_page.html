@@ -76,6 +76,80 @@
 
 
 
+
+
+
+h1{
+  text-align:center;
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  font-size:2.5em;
+  margin:20px 0;
+}
+
+.container{
+  width:90%;
+  margin:auto;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+}
+
+.blue{
+  border:2px solid #1ABC9C;
+}
+
+.blue thead{
+  background:#1ABC9C;
+}
+
+.purple{
+  border:2px solid #9B59B6;
+}
+
+.purple thead{
+  background:#9B59B6;
+}
+
+thead{
+  color:white;
+}
+
+th,td{
+  text-align:center;
+  padding:5px 0;
+}
+
+tbody tr:nth-child(even){
+  background:#ECF0F1;
+}
+
+
+
+.fixed{
+  top:0;
+  position:fixed;
+  width:auto;
+  display:none;
+  border:none;
+}
+
+.up{
+  cursor:pointer;
+}
+.update{
+    cursor:pointer;
+}
+.delete{
+    cursor:pointer;
+}
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -100,7 +174,36 @@
   <h1>click to view list of students</h1>
   <a href="">**click here**</a>
     </div>
+    <div>
+      <h1>&darr; Registered Students &darr;</h1>
+      <a th:href= "@{/showStudent}" >Add User</a>
+      <table class="blue">
+        <thead>
+          <tr>
+            <th>Student Name </th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Course </th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="students : ${ListOfStudent}">
+              <td   th:text="${students.name}"></td>
+              <td   th:text="${students.email}"></td>
+              <td   th:text="${students.Address}"></td>
+              <td   th:text="${students.Course}"></td>
+              <td><a class="update" th:href="@{/updatStudent/{id}(id=${students.id})}">update</a></td>
+              <td><a class="delete" th:href="@{/deleteStudent/{id}(id=${students.id})}">Delete</a</td>
+          </tr>
+        </tbody>
+      </table>
 
+
+
+
+    </div>
 
 
 </body>

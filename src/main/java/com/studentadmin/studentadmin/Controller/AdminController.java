@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.studentadmin.studentadmin.Model.AdminModel;
 import com.studentadmin.studentadmin.Service.AdminService;
+import com.studentadmin.studentadmin.Service.StudService;
 
 
 
@@ -18,6 +19,9 @@ public class AdminController {
    
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private StudService studservice;
 
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
@@ -60,6 +64,7 @@ public class AdminController {
             model.addAttribute("userLogin",authenticated.getName());
             model.addAttribute("name",authenticated.getName());
             model.addAttribute("contact",authenticated.getContact());
+            model.addAttribute("ListOfStudent",studservice.getAllStudent());
             return "admin_Dash_page";
 
         }else {

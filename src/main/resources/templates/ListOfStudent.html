@@ -90,19 +90,19 @@ tbody tr:nth-child(even){
           <th>Student Name </th>
           <th>Email</th>
           <th>Address</th>
-          <th>Course Selected</th>
+          <th>Course </th>
           <th>Update</th>
-          <th>Update/Delete</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="students : ${ListOfStudent}"">
+        <tr th:each="students : ${ListOfStudent}">
             <td   th:text="${students.name}"></td>
             <td   th:text="${students.email}"></td>
             <td   th:text="${students.Address}"></td>
             <td   th:text="${students.Course}"></td>
-            <td><button class="update" th:href="@{/updatStudent/{id}(id=${user.id})}">update</button></td>
-            <td><button class="delete" th:href="@{/deleteStudent/{id}(id=${user.id})}">Delete</a</td>
+            <td><a class="update" th:href="@{/updatStudent/{id}(id=${students.id})}">update</a></td>
+            <td><a class="delete" th:href="@{/deleteStudent/{id}(id=${students.id})}">Delete</a</td>
         </tr>
       </tbody>
     </table>

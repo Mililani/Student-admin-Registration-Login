@@ -24,7 +24,7 @@ public class StudController {
     public String Viewhome(Model model){
         model.addAttribute("ListOfStudent",studservice.getAllStudent());
       
-        return "index";
+        return "ListOfStudent";
 
     }
 
@@ -44,7 +44,7 @@ public class StudController {
        //save to database
        studservice.saveStudent(student);
        
-        return "redirect:/";
+        return "redirect:/Admin_Portal";
     }
 
     @GetMapping("/updatStudent/{id}")
@@ -65,7 +65,7 @@ public String usersedelete(@PathVariable (value ="id")Integer id){
 
     this.studservice.deleteStudentById(id);
 
-    return "redirect:/";
+    return "redirect:/Admin_Portal";
 
 }
 

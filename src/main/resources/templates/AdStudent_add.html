@@ -138,19 +138,17 @@
         <div class="shape"></div>
     </div>
         
-        <form  action="#" th:action="@{/saveStudent}" th:object="${user}" method="post">
+        <form  action="#" th:action="@{/saveStudent}" th:object="${students}" method="post">
             <h1>Admin Control </h1>
         <hr>
         <h2>Add new Student</h2>
             <input type="text" th:field="*{name}" placeholder="Enter Student name">
 
-            <input type="text" th:field="*{email}" placeholder="Enter Student  email">
+            <input type="email" th:field="*{email}" placeholder="Enter Student  email">
 
-            <input type="address" th:field="*{Address}" placeholder="Enter Student  Address">
+            <input type="text" th:field="*{Address}" placeholder="Enter Student  Address">
 
             <input type="text" th:field="*{Course}" placeholder="Course">
-
-            <input type="email" th:field="*{email}" placeholder="email">
             
             <input type="password" th:field="*{password}" placeholder="password">
             
