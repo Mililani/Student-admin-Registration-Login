@@ -7,10 +7,7 @@
     <title>Document</title>
     <style>
 
-body{
-  font:1.2em normal Arial,sans-serif;
-  color:#34495E;
-}
+
 
 h1{
   text-align:center;
@@ -59,10 +56,7 @@ tbody tr:nth-child(even){
   background:#ECF0F1;
 }
 
-tbody tr:hover{
-background:#BDC3C7;
-  color:#FFFFFF;
-}
+
 
 .fixed{
   top:0;
@@ -72,12 +66,14 @@ background:#BDC3C7;
   border:none;
 }
 
-.scrollMore{
-  margin-top:600px;
-}
-
 .up{
   cursor:pointer;
+}
+.update{
+    cursor:pointer;
+}
+.delete{
+    cursor:pointer;
 }
 
 
@@ -94,21 +90,22 @@ background:#BDC3C7;
           <th>Email</th>
           <th>Address</th>
           <th>Course Selected</th>
+          <th>Update</th>
           <th>Update/Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Non</td>
-          <td>Mais</td>
-          <td>Allo !</td>
-          <td></td>
+        <tr th:each="students : ${ListOfStudent}"">
+            <td   th:text="${students.name}"></td>
+            <td   th:text="${students.email}"></td>
+            <td   th:text="${students.Address}"></td>
+            <td   th:text="${students.Course}"></td>
+            <td><button class="update" th:href="@{/updatStudent/{id}(id=${user.id})}">update</button></td>
+            <td><button class="delete" th:href="@{/deleteStudent/{id}(id=${user.id})}">Delete</a</td>
         </tr>
-       
-
       </tbody>
     </table>
-    <h1 class="up scrollMore">&uarr; UP &uarr;</h1>
+  
 
 
 
