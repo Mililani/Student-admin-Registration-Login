@@ -6,19 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      * {
-        border: 0;
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
 
-      body {
-        background: rgb(250, 250, 250);
-        font-family: Lato, Helvetica, Arial, sans-serif;
-      }
-
-      a {
+a {
         color: inherit;
         font-family: inherit;
         font-size: inherit;
@@ -345,7 +334,8 @@
         text-transform: uppercase;
         -webkit-transition: color 0.3s ease;
         transition: color 0.3s ease;
-       
+        /*   -webkit-transition: 0.2s opacity 0.2s ease-out;
+  transition: 0.2s opacity 0.2s ease-out; */
       }
 
       .overlay-menu li a:hover,
@@ -354,6 +344,95 @@
         -webkit-transition: color 0.3s ease;
         transition: color 0.3s ease;
       }
+
+
+
+
+
+
+
+
+
+      body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #878787 ;
+}
+
+.typing.animate {
+  width: 21ch;
+  border-right: 0.1em solid black;
+  font-family: monospace;
+  font-size: 2em;
+  animation: type 2.5s steps(20), writer 1s infinite alternate, delete 0.5s steps(5) 2.5s, type2 1s steps(4) 3s forwards, type3 3s steps(22, end) 6s forwards;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.typing.animate::before { 
+  content: "Spring Boot project";
+  animation: type2 10s steps(4) 3s forwards, type3 10s steps(22, end) 6s forwards;
+}
+
+@keyframes type {
+  from {
+    width: 0;
+  }
+  to {
+    width: 21ch;
+  }
+}
+
+@keyframes type2 {
+  from {
+    width: 16ch;
+    content: "Hello Admin."
+  }
+  to {
+    width: 20ch;
+    content: "Welcome to Portal."
+  }
+}
+
+@keyframes type3 {
+  from {
+    width: 20ch;
+    content: "Hello Admin. Welcome to Your Portal!"
+  }
+  to {
+    width: 42ch;
+    content: "Hello Admin. Welcome to Your Portal!"
+  }
+}
+
+@keyframes writer {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes delete {
+  from {
+    width: 21ch;
+  }
+  to {
+    width: 16ch;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
     </style>
   </head>
   <body>
@@ -373,7 +452,10 @@
         </ul>
       </div>
     </nav>
-   
+<div class="bod">
+  <div class="typing animate"></div>
+
+</div>   
 
     <script>
       let menuIcon = document.querySelector(".menuIcon");
@@ -397,6 +479,15 @@
           toggleIcon.className = "menuIcon";
         }
       });
+
+    $(document).ready(() => {
+  let typingElement = $('.typing');
+
+  typingElement.on('click', (e) => {
+    typingElement.removeClass('animate');
+    setTimeout(() => typingElement.addClass('animate'), 1);
+  })
+});
     </script>
   </body>
 </html>
