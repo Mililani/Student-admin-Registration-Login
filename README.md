@@ -23,7 +23,7 @@
 
 ## Running 
 ```
-If using visaul studio code run the code as java (Run Java)
+If using visual studio code run the code as java (Run Java)
 Code must be ran in the main function
 ```
 
