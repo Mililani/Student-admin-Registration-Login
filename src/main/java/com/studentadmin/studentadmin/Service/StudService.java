@@ -1,16 +1,19 @@
-package com.myproject.myproject.Service;
+package com.studentadmin.studentadmin.Service;
+
 
 import java.util.List;
 
-import com.myproject.myproject.Model.UsersModel;
+import com.studentadmin.studentadmin.Model.StudentModel;
+
+
 
 public interface StudService {
     
-    List<UsersModel>getAllUsers();
+    List<StudentModel>getAllStudent();
     
-    void saveUsers(UsersModel usersModel);
+    void saveStudent(StudentModel studentModel);
 
-    UsersModel getUserBiId(Integer id);
+    StudentModel getStudentById(Integer id);
 
-    void deleteUserById(Integer id);
+    void deleteStudentById(Integer id);
 }

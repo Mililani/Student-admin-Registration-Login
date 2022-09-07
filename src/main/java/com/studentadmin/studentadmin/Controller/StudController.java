@@ -1,4 +1,4 @@
-package com.myproject.myproject.Controller;
+package com.studentadmin.studentadmin.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.myproject.myproject.Model.UsersModel;
-import com.myproject.myproject.Service.StudService;
+import com.studentadmin.studentadmin.Model.StudentModel;
+import com.studentadmin.studentadmin.Service.StudService;
+
+
 
 @Controller
 public class StudController {
@@ -20,7 +22,7 @@ public class StudController {
     //display list of Users
 @GetMapping("/")
     public String Viewhome(Model model){
-        model.addAttribute("listUsers",studservice.getAllUsers());
+        model.addAttribute("ListOfStudent",studservice.getAllStudent());
       
         return "index";
 
@@ -29,8 +31,8 @@ public class StudController {
     @GetMapping("/showUser")
     public String  showNewUserForm(Model model){
         //created model attribut to bind form data
-        UsersModel user= new UsersModel();
-        model.addAttribute("user",user);
+        StudentModel student= new StudentModel();
+        model.addAttribute("students",student);
 
         return "add_user";
 
@@ -38,9 +40,9 @@ public class StudController {
 
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute ("user") UsersModel user){
+    public String saveUser(@ModelAttribute ("students") StudentModel student){
        //save to database
-       studservice.saveUsers(user);
+       studservice.saveStudent(student);
        
         return "redirect:/";
     }
@@ -49,7 +51,7 @@ public class StudController {
     public String showedit(@PathVariable (value ="id")Integer id,Model model){
 
         //get imp from service vaai id
-        UsersModel user= studservice.getUserBiId(id);
+        StudentModel user= studservice.getStudentById(id);
 
         //set user model attributes to pre-populate the form
         model.addAttribute("user",user);
@@ -61,7 +63,7 @@ public class StudController {
     @GetMapping("/delete/{id}")
 public String usersedelete(@PathVariable (value ="id")Integer id){
 
-    this.studservice.deleteUserById(id);
+    this.studservice.deleteStudentById(id);
 
     return "redirect:/";
 

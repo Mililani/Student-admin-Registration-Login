@@ -1,4 +1,4 @@
-package com.myproject.myproject.Service;
+package com.studentadmin.studentadmin.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.myproject.myproject.Model.UsersModel;
-import com.myproject.myproject.Repository.StudRepository;
+import com.studentadmin.studentadmin.Model.StudentModel;
+import com.studentadmin.studentadmin.Repository.StudRepository;
+
 
 
 @Service
@@ -18,35 +19,35 @@ public class StudServiceImpl implements StudService{
    
    //get all user in a list 
     @Override
-    public List<UsersModel> getAllUsers() {
+    public List<StudentModel> getAllStudent() {
         return studRepository.findAll();
     }
 
 
     @Override
-    public void saveUsers(UsersModel usersModel) {
-        this.studRepository.save(usersModel);
+    public void saveStudent(StudentModel studentModel) {
+        this.studRepository.save(studentModel);
         
     }
 
 
     @Override
-    public UsersModel getUserBiId(Integer id) {
-        Optional<UsersModel> optional = studRepository.findById(id);
-        UsersModel userModel= null;
+    public StudentModel getStudentById(Integer id) {
+        Optional<StudentModel> optional = studRepository.findById(id);
+        StudentModel studentModel= null;
         if(optional.isPresent()) {
-            userModel = optional.get(); 
+            studentModel = optional.get(); 
         }else{
 
                 throw new RuntimeException("User not found"+id);
         }
-        return userModel;
+        return studentModel;
         
     }
 
 
     @Override
-    public void deleteUserById(Integer id) {
+    public void deleteStudentById(Integer id) {
         this.studRepository.deleteById(id);;
         
     }
