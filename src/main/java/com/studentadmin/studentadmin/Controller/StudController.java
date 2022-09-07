@@ -20,7 +20,7 @@ public class StudController {
     private StudService studservice;
 
     //display list of Users
-@GetMapping("/")
+@GetMapping("/display")
     public String Viewhome(Model model){
         model.addAttribute("ListOfStudent",studservice.getAllStudent());
       
@@ -28,18 +28,18 @@ public class StudController {
 
     }
 
-    @GetMapping("/showUser")
+    @GetMapping("/showStudent")
     public String  showNewUserForm(Model model){
         //created model attribut to bind form data
         StudentModel student= new StudentModel();
         model.addAttribute("students",student);
 
-        return "add_user";
+        return "AdStudent_add";
 
     }
 
 
-    @PostMapping("/saveUser")
+    @PostMapping("/saveStudent")
     public String saveUser(@ModelAttribute ("students") StudentModel student){
        //save to database
        studservice.saveStudent(student);
@@ -47,20 +47,20 @@ public class StudController {
         return "redirect:/";
     }
 
-    @GetMapping("/showedit/{id}")
+    @GetMapping("/updatStudent/{id}")
     public String showedit(@PathVariable (value ="id")Integer id,Model model){
 
         //get imp from service vaai id
-        StudentModel user= studservice.getStudentById(id);
+        StudentModel student= studservice.getStudentById(id);
 
         //set user model attributes to pre-populate the form
-        model.addAttribute("user",user);
+        model.addAttribute("students",student);
         
-        return "edit_user";
+        return "update_Student";
 
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/deleteStudent/{id}")
 public String usersedelete(@PathVariable (value ="id")Integer id){
 
     this.studservice.deleteStudentById(id);
